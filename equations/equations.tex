@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{polyglossia}
+\usepackage{color}
 \setdefaultlanguage{russian}
 
 \begin{document}
@@ -187,6 +188,7 @@
   v_{x}(y) = v_{wall}\frac{y}{Y},
 \end{equation}
 
+\textcolor{red}{Надо проверить/исправить}
 \begin{equation}
   T(y) = \frac{\eta v_{x}'^2}{2\lambda'}y^2 + C_{1}y + C_{2} = \frac{\eta v_{wall}^2}{2\lambda'}\left(\frac{y}{Y}\right)^2 + C_{1}y + T_{wall,1},
 \end{equation}
@@ -219,7 +221,7 @@
 \end{equation}
 
 \begin{equation}
-  \frac{d x_{2}}{d \zeta} = Y x_{2}',\label{eqn-dimensionless-dx1}
+  \frac{d x_{2}}{d \zeta} = Y x_{2}',\label{eqn-dimensionless-dx2}
 \end{equation}
 
 \begin{equation}
@@ -229,6 +231,14 @@
 \begin{equation}
   \frac{d x_{2}'}{d \zeta} = -\frac{Y}{\lambda'}\left(\frac{\eta}{T_{wall,2}}v_{wall}^{2}x_{1}'^2+x_{2}'^{2}\frac{\partial \lambda'}{\partial x_{2}} \right).
 \end{equation}
+
+\subsection{Расчеты для чистого аргона}
+Предполагалось отсутствие скачка температуры у стенки, а скорость скольжения выражалась по формуле:
+
+\begin{equation}
+  v_{slip} = \sigma_{P} \frac{\eta v_{m}}{nkT}\frac{d v_{x}}{d y} + \sigma_{T}\frac{\eta}{\rho}\frac{d \ln T_{wall}}{d y},
+\end{equation}
+где $v_{m} = \sqrt{2kT_{wall} / m}$, коэффициент $\sigma_{P} = 1.18$, $\sigma_{T} = 1.136785$.
 
 \begin{center}
 \includegraphics[width=10cm]{plots/vel_tc3}
