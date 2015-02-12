@@ -1,0 +1,262 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\plotWidth}{0.48}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+
+\begin{document}
+
+
+\section{Введение}
+\begin{equation}
+  \frac{\partial}{\partial x} = \frac{\partial}{\partial z} = \frac{\partial}{\partial t} = 0; \quad \frac{\partial}{\partial y} = \frac{d}{d y},
+\end{equation}
+
+\begin{equation}
+  \mathbf{v} = (v_{x}, 0, 0),\quad \nabla=\left(0, \frac{\partial}{\partial y}, 0 \right),
+\end{equation}
+
+\begin{equation}
+  \frac{d A}{d t} = \frac{\partial A}{\partial t} + \mathbf{v} \cdot \nabla A = 0.
+\end{equation}
+
+Макропараметры:
+\begin{equation}
+  n_{c}(y),\:c=1,\ldots,L;\quad T(y);\quad v_{x}(y).
+\end{equation}
+
+
+% \begin{equation}
+%   \rho \frac{dU}{dt} + \nabla \cdot \mathbf{q} + \mathbf{P} : \nabla \mathbf{v} = 0.
+% \end{equation}
+
+\section{Производные основных величин}
+
+\begin{equation}
+  \mathbf{P} =
+  \begin{pmatrix}
+  p - p_{rel} & -\eta \frac{\partial v_{x}}{\partial y} & 0 \\
+  -\eta \frac{\partial v_{x}}{\partial y} & p - p_{rel} & 0 \\
+  0 & 0 & p - p_{rel}
+  \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+  \nabla \mathbf{v} =
+  \begin{pmatrix}
+  \frac{\partial v_{x}}{\partial x} & \frac{\partial v_{y}}{\partial x} & \frac{\partial v_{z}}{\partial x} \\
+  \frac{\partial v_{x}}{\partial y} & \frac{\partial v_{y}}{\partial y} & \frac{\partial v_{z}}{\partial y} \\
+  \frac{\partial v_{x}}{\partial z} & \frac{\partial v_{y}}{\partial z} & \frac{\partial v_{z}}{\partial z},
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  0 & 0 & 0 \\
+  \frac{\partial v_{x}}{\partial y} & 0 & 0 \\
+  0 & 0 & 0
+  \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+  \mathbf{P} : \nabla \mathbf{v} = \eta \left(\frac{d v_{x}}{d y} \right)^2
+\end{equation}
+
+\begin{equation}
+  \mathbf{q} = -\lambda' \nabla T - p \sum_{c} D_{T_{c}} \mathbf{d}_{c} + \sum_{c} \rho_{c} h_{c} \mathbf{V}_{c}.
+\end{equation}
+
+\begin{equation}
+  d_{c} = \frac{d \frac{n_{c}}{n}}{d y} + \left(\frac{n_{c}}{n} - \frac{\rho_{c}}{\rho} \right) \frac{d \ln p}{d y} =
+  \frac{n_{c}'(y)n - n_{c}\sum_{d}n_{d}'(y)}{n^2} + \left(\frac{n_{c}}{n} - \frac{\rho_{c}}{\rho} \right)\frac{1}{p} \frac{d p}{d y},
+\end{equation}
+
+\begin{equation}
+  \mathbf{V}_{c} = -\sum_{d}D_{cd}\mathbf{d}_{d} - D_{T_{c}}\nabla \ln T,
+\end{equation}
+
+\begin{equation}
+  \nabla \cdot (\lambda' \nabla T) = \frac{d (\lambda' T'(y))}{dy} = \lambda' T''(y) + T'(y) \frac{d \lambda'}{d y} = \lambda' T''(y) + T'(y) \left(T'(y) \frac{\partial \lambda'}{\partial T} + \sum_{c} n_{c}'(y) \frac{\partial \lambda'}{\partial n_{c}} \right),\label{d-lambda-nabla-T}
+\end{equation}
+
+\begin{equation}
+  \nabla \left(p \sum_{c} D_{T_{c}} \mathbf{d}_{c} \right) = \frac{d p}{d y} \sum_{c} D_{T_{c}} d_{c} + p \left(\sum_{c} D_{T_{c}} \frac{d d_{c}}{d y} + \sum_{c} \frac{d D_{T_{c}}}{d y} d_{c} \right),
+\end{equation}
+
+\begin{equation}
+  \frac{d p}{d y} = p'(y) = k \left(T\sum_{c} n_{c}'(y) +  T'(y)n \right),
+\end{equation}
+
+\begin{equation}
+  p''(y) = k \left(2T'(y)\sum_{c} n_{c}'(y) + T\sum_{c} n_{c}''(y) +  T''(y)n\right),
+\end{equation}
+
+\begin{multline}
+  \frac{d}{dy}d_{c} = \frac{n_{c}''(y)}{n} - 2\frac{n_{c}'(y)\sum_{d}n_{d}'(y)}{n^2} - \frac{n_{c}\sum_{d}n_{d}''(y)}{n^2} + 2\frac{n_{c}\left(\sum_{d}n_{d}'(y) \right)^2}{n^3} + \\
+  + \frac{n_{c}'(y)n - n_{c}\sum_{d}n_{d}'(y)}{n^2} \frac{1}{p} \frac{dp}{dy} - \frac{n_{c}}{n} \frac{p'(y)^2}{p^2} + \frac{n_{c}}{n} \frac{1}{p}p''(y) + \\
+  + m_{c} \left(\frac{n_{c}'(y)\rho - n_{c}\sum_{d}m_{d}n_{d}'(y)}{\rho^2} \frac{1}{p} \frac{dp}{dy} - \frac{n_{c}}{\rho} \frac{p'(y)^2}{p^2} + \frac{n_{c}}{\rho} \frac{1}{p}p''(y) \right)
+\end{multline}
+
+\begin{equation}
+  \frac{d D_{T_{c}}}{d y} = T'(y) \frac{\partial D_{T_{c}}}{\partial T} + \sum_{d} \frac{\partial D_{T_{c}}}{\partial n_{d}} n_{d}'(y),
+\end{equation}
+
+\begin{equation}
+  \frac{d h_{c}}{d y} = \frac{5}{2} \frac{k}{m_{c}}T'(y) + \frac{\partial \left(E_{rot,c} + E_{vibr,c} \right)}{\partial T}T'(y),
+\end{equation}
+
+\begin{equation}
+  \frac{d V_{c}}{dy} = -\frac{d \sum_{d}D_{cd}d_{d}}{dy} - \frac{d D_{T_{c}}}{d y} \frac{1}{T} T'(y) - D_{T_{c}} \frac{T(y)T''(y) - T'(y)T'(y)}{T(y)^2},
+\end{equation}
+
+\begin{equation}
+  \frac{d D_{cd}}{dy} = \sum_{f}\frac{\partial D_{cd}}{\partial n_{f}}n_{f}'(y) + \frac{\partial D_{cd}}{\partial T}T'(y),
+\end{equation}
+
+\section{Уравнения переноса}
+
+\begin{equation}
+  \frac{d n_{c}}{d y} V_{c} + n_{c}\frac{d V_{c}}{d y} = R_{c}^{react},\quad c=1,\ldots,L,\label{densityeqn}
+\end{equation}
+
+\begin{equation}
+  \frac{d}{d y}\left(\eta \frac{d v_{x}}{d y} \right) = 0,\label{motioneqn}
+\end{equation}
+
+\begin{equation}
+  \frac{d q}{d y} - \eta \left(\frac{d v_{x}}{d y} \right)^2 = 0.\label{energyeqn}
+\end{equation}
+
+\subsection{Однокомпонентная смесь}
+Рассмотрим однокомпонентное течение без внутренних степенй свободы.
+В таком течении $V_{c}$ = 0, $\frac{\partial n}{\partial y} = 0$, $\eta=\eta(T)$, $\lambda'=\lambda'(T)$.
+
+% Энтальпия для такого течения вычисляется по формуле
+% \begin{equation}
+%   mh = \frac{5}{2}kT + \varepsilon_{c}.
+% \end{equation}
+
+Уравнение теплопроводности принимает вид:
+
+% \begin{multline}
+%   \eta \left(\frac{d v_{x}}{d y} \right)^2 -\lambda' T'' - T' \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right)
+%   + n' m h V + \frac{5}{2}nkT' V + \\
+%   + nmh \left(- \left(T' \frac{\partial D_{T}}{\partial T} + \frac{\partial D_{T}}{\partial n} n' \right) \frac{1}{T} T' - D_{T} \frac{TT'' - T'^2}{T^2} \right)=0
+% \end{multline}
+
+Систему уравнений (\ref{densityeqn}) -- (\ref{energyeqn}) можно свести к системе ОДУ первого порядка:
+
+% \begin{equation}
+%   D_{T} T' \frac{d n}{d y} + n\left(\left(T' \frac{\partial D_{T}}{\partial T} + \frac{\partial D_{T}}{\partial n} n'(y)\right)
+%    T' + D_{T} \frac{T dT' / dy - T'^2}{T} \right) = 0
+% \end{equation}
+
+\begin{equation}
+  \frac{d v_{x}}{d y} = v_{x}',\label{eqn-dimensional-dv}
+\end{equation}
+
+\begin{equation}
+  \frac{d T}{d y} = T',\label{eqn-dimensional-dT}
+\end{equation}
+
+\begin{equation}
+  \frac{d v_{x}'}{d y} = -\frac{1}{\eta} v_{x}' T' \frac{\partial \eta}{\partial T},\label{eqn-dimensional-d2v}
+\end{equation}
+
+\begin{equation}
+   \frac{dT'}{dy} = -\frac{\eta v_{x}'^2}{\lambda'}
+  - \frac{1}{\lambda'} T'^2 \frac{\partial \lambda'}{\partial T}.\label{eqn-dimensional-d2T}
+\end{equation}
+
+Граничные условия имеют вид
+
+\begin{equation}
+  v_{x}(0) = 0,\:v_{x}(Y) = v_{wall},\:T(0) = T_{wall,1},\:T(Y) = T_{wall,2}.
+\end{equation}
+где $Y$ --- высота канала.
+
+В случае, если $\frac{\partial \lambda'}{\partial T} = \frac{\partial \eta}{\partial T} = 0$, то задача имеет аналитическое решение:
+
+\begin{equation}
+  v_{x}(y) = v_{wall}\frac{y}{Y},
+\end{equation}
+
+\begin{equation}
+  T(y) = \frac{\eta v_{x}'^2}{2\lambda'}y^2 + C_{1}y + C_{2} = \frac{\eta v_{wall}^2}{2\lambda'}\left(\frac{y}{Y}\right)^2 + C_{1}y + T_{wall,1},
+\end{equation}
+где
+
+\begin{equation}
+  C_{1}= \frac{T_{wall,2} - T_{wall,1} -\frac{\eta v_{x}'^2}{2\lambda'}}{Y}.
+\end{equation}
+
+Для чистого атомарного газа коэффициенты теплопроводности $\lambda'$ и сдвиговой вязкости $\eta$ вычисляются следующим образом:
+
+\begin{equation}
+  \lambda' = \frac{75k^2T}{32m\Omega^{(2,2)}},
+\end{equation}
+
+\begin{equation}
+  \eta = \frac{5kT}{8\Omega^{(2,2)}}.
+\end{equation}
+
+Систему (\ref{eqn-dimensional-dv} -- \ref{eqn-dimensional-d2T}) можно привести к безразмерному виду, введя следующие переменные:
+
+\begin{equation}
+  \zeta = \frac{y}{Y},\quad x_{1} = \frac{v_{x}}{v_{wall}},\quad x_{2} = \frac{T}{T_{wall, 2}}.
+\end{equation}
+
+Тогда $\frac{\partial }{\partial y}=\frac{\partial }{\partial \zeta}\frac{1}{Y}$, $\frac{\partial }{\partial T}=\frac{\partial }{\partial x_{2}}\frac{1}{T_{wall,2}}$, и обезразмеренная система (\ref{eqn-dimensional-dv} -- \ref{eqn-dimensional-d2T}) имеет вид
+
+\begin{equation}
+  \frac{d x_{1}}{d \zeta} = Y x_{1}',\label{eqn-dimensionless-dx1}
+\end{equation}
+
+\begin{equation}
+  \frac{d x_{2}}{d \zeta} = Y x_{2}',\label{eqn-dimensionless-dx1}
+\end{equation}
+
+\begin{equation}
+  \frac{d x_{1}'}{d \zeta} = -\frac{Y}{\eta}x_{1}'x_{2}'\frac{\partial \eta}{\partial x_{2}},\label{eqn-dimensionless-dx21}
+\end{equation}
+
+\begin{equation}
+  \frac{d x_{2}'}{d \zeta} = -\frac{Y}{\lambda'}\left(\frac{\eta}{T_{wall,2}}v_{wall}^{2}x_{1}'^2+x_{2}'^{2}\frac{\partial \lambda'}{\partial x_{2}} \right).
+\end{equation}
+
+\begin{center}
+\includegraphics[width=10cm]{plots/vel_tc3}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/T_tc3}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/eta_tc3}
+\end{center}
+
+% \begin{equation}
+%   \frac{d n}{d y} = n \frac{T'^2 \frac{\partial D_{T}}{\partial T} + D_{T} \frac{T dT'/dy - T'^2}{T}}{T' \left(D_{T} + n \frac{\partial D_{T}}{\partial n} \right)},
+% \end{equation}
+
+% \begin{equation}
+%   \frac{d v_{x}'}{d y} = -\frac{1}{\eta} v_{x}' \left(T' \frac{\partial \eta}{\partial T} + n' \frac{\partial \eta}{\partial n} \right),
+% \end{equation}
+
+% \begin{multline}
+%    \frac{dT'}{dy} = \frac{\eta v_{x}'^2}{\lambda' + D_{T} n \tau(T) }
+%   - \frac{T'}{\lambda' + D_{T} n\tau(T)} \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} + \right. \\ + \left. n'\tau(T)D_{T} + \frac{5}{2}nkD_{T}\frac{T'}{T}
+%   + n\tau(T) \left(T' \frac{\partial D_{T}}{\partial T} + n' \frac{\partial D_{T}}{\partial n} + D_{T} \frac{T'}{T} \right)\right),
+% \end{multline}
+% где
+
+% \begin{equation}
+%   \tau(T) = \frac{5}{2}k + \frac{\varepsilon}{T}.
+% \end{equation}
+
+\end{document}
