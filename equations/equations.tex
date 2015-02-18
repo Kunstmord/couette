@@ -35,12 +35,6 @@
 \end{equation}
 
 
-% \begin{equation}
-%   \rho \frac{dU}{dt} + \nabla \cdot \mathbf{q} + \mathbf{P} : \nabla \mathbf{v} = 0.
-% \end{equation}
-
-\section{Производные основных величин}
-
 \begin{equation}
   \mathbf{P} =
   \begin{pmatrix}
@@ -68,6 +62,12 @@
 \begin{equation}
   \mathbf{P} : \nabla \mathbf{v} = \eta \left(\frac{d v_{x}}{d y} \right)^2
 \end{equation}
+
+% \begin{equation}
+%   \rho \frac{dU}{dt} + \nabla \cdot \mathbf{q} + \mathbf{P} : \nabla \mathbf{v} = 0.
+% \end{equation}
+
+\section{Производные основных величин (однотемпературное приближение)}
 
 \begin{equation}
   \mathbf{q} = -\lambda' \nabla T - p \sum_{c} D_{T_{c}} \mathbf{d}_{c} + \sum_{c} \rho_{c} h_{c} \mathbf{V}_{c}.
@@ -134,7 +134,7 @@
   \frac{d q}{d y} - \eta \left(\frac{d v_{x}}{d y} \right)^2 = 0.\label{energyeqn}
 \end{equation}
 
-\subsection{Однокомпонентная смесь}
+\subsection{Однокомпонентная смесь без внутренних степеней свободы}
 Рассмотрим однокомпонентное течение без внутренних степенй свободы.
 В таком течении $V_{c}$ = 0, $\frac{\partial n}{\partial y} = 0$, $\eta=\eta(T)$, $\lambda'=\lambda'(T)$.
 
@@ -236,10 +236,15 @@
 Предполагалось отсутствие скачка температуры у стенки, а скорость скольжения выражалась по формуле:
 
 \begin{equation}
-  v_{slip} = \sigma_{P} \frac{\eta v_{m}}{nkT}\frac{d v_{x}}{d y} + \sigma_{T}\frac{\eta}{\rho}\frac{d \ln T_{wall}}{d y},
+  v_{slip} = \sigma_{P} \frac{\eta v_{m}}{nkT}\frac{d v_{x}}{d \nu} + \sigma_{T}\frac{\eta}{\rho}\frac{d \ln T}{d \nu},
 \end{equation}
-где $v_{m} = \sqrt{2kT_{wall} / m}$, коэффициент $\sigma_{P} = 1.18$, $\sigma_{T} = 1.136785$.
+где $v_{m} = \sqrt{2kT_{wall} / m}$, $\nu$ --- нормаль к поверхности; для нижней стенки ($y=0$) $d / d \nu$ = $d / d y$, для верхней ($y=Y$) $d / d \nu$ = $-d / d y$.
 
+Для чисто диффузного отражения коэффициенты равны $\sigma_{P} = 0.8862$, $\sigma_{T} = 0.75$.
+
+Значение численной плотности смеси бралось равным $n=1.4 \cdot 10^{20}$.
+
+Случай 1 (температуры стенок равны 1000K):
 \begin{center}
 \includegraphics[width=10cm]{plots/vel_tc3}
 \end{center}
@@ -249,6 +254,141 @@
 \begin{center}
 \includegraphics[width=10cm]{plots/eta_tc3}
 \end{center}
+
+Случай 2 (температуры стенок равны 273K):
+\begin{center}
+\includegraphics[width=10cm]{plots/vel_tc1}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/T_tc1}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/eta_tc1}
+\end{center}
+
+\section{Производные основных величин (поуровневое приближение)}
+Рассмотрим течение чисто молекулярного газа в поуровневом приближении.
+
+Уравнения для численных плотностей имеют вид
+\begin{equation}
+  \frac{d n_{i}}{d y} V_{i} + n_{i}\frac{d V_{i}}{d y} = R_{i}^{vibr},\quad c=1,\ldots,L.\label{densityeqn-sts}
+\end{equation}
+
+Скорость диффузии:
+
+% \begin{equation}
+%    \mathbf{V}_{i} = -D_{ii}\mathbf{d}_{i} -D \sum_{k \neq i}\mathbf{d}_{k} - D_{T}\nabla \ln T,
+% \end{equation}
+
+% тепловой поток:
+
+% \begin{equation}
+%   \mathbf{q} = -\lambda' \nabla T - p D_{T} \mathbf{d} + \sum_{i} \left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) n_{i} \mathbf{V}_{i}.
+% \end{equation}
+
+\begin{equation}
+   \mathbf{V}_{i} = -D_{ii}\mathbf{d}_{i} -D \sum_{k \neq i}\mathbf{d}_{k},
+\end{equation}
+
+тепловой поток:
+
+\begin{equation}
+  \mathbf{q} = -\lambda' \nabla T + \sum_{i} \left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) n_{i} \mathbf{V}_{i}.
+\end{equation}
+
+Основываясь на упрощенных формулах для коэффициентов диффузии, и введя следующую величину:
+
+\begin{equation}
+  \mathcal{D} = \frac{3kT}{8nm}\frac{1}{\Omega^{(1,1)}},
+\end{equation}
+
+имеем выражения для $D_{ii}$ и $D$:
+
+\begin{equation}
+  D_{ii} = \mathcal{D} \left(\frac{\rho}{\rho_{i}} - 1 \right)=\mathcal{D} \left(\frac{n}{n_{i}} - 1 \right),\quad D = -\mathcal{D}.
+\end{equation}
+
+В силу того, что смесь является однокомпонентной, выражение для диффузионных термодинамических сил упрощается и принимает вид
+
+\begin{equation}
+  \mathbf{d}_{i} = \nabla \left(\frac{n_{i}}{n} \right).
+\end{equation}
+
+С учетом того, что течение одномерное, имеем
+
+\begin{equation}
+  d_{i} = \frac{n_{i}'(y)n - n_{i}n'(y)}{n^2},
+\end{equation}
+
+\begin{equation}
+  \frac{d d_{i}}{d y} = \frac{n_{i}''(y)}{n} - 2\frac{n_{i}'(y)n'(y)}{n^2} - \frac{n_{i}n''(y)}{n^2} + 2\frac{n_{i}\left(n'(y) \right)^2}{n^3},
+\end{equation}
+
+\begin{equation}
+  \frac{d\mathcal{D}}{dy} = \frac{\partial \mathcal{D}}{\partial T} T'(y) + \frac{\partial \mathcal{D}}{\partial n} n'(y),
+\end{equation}
+
+\begin{equation}
+  \frac{d D_{ii}}{dy} = \left(\frac{\partial \mathcal{D}}{\partial T} \frac{d T}{d y} + \frac{\partial \mathcal{D}}{\partial n} n'(y) \right)
+  \left(\frac{n}{n_{i}} - 1 \right) + \mathcal{D} \frac{n'(y)n_{i} - n_{i}'(y)n}{n_{i}^2}.
+\end{equation}
+
+Введем обозначение
+
+\begin{equation}
+  n_{k,i} = \sum_{k \neq i} n_{k}(y).
+\end{equation}
+
+Тогда величину $\sum_{k \neq i} d d_{k} / dy$ можно преобразовать:
+
+\begin{multline}
+  \sum_{k \neq i} \frac{d d_{k}}{d y} = \sum_{k \neq i} \left(\frac{n_{i}''(y)}{n} - 2\frac{n_{i}'(y)n'(y)}{n^2} - \frac{n_{i}n''(y)}{n^2} + 2\frac{n_{i}\left(n'(y) \right)^2}{n^3}\right) = \\
+  = \frac{n_{k,i}''(y)}{n} - 2\frac{n_{k,i}'(y)n'(y)}{n^2} - \frac{n_{k,i}'(y) n''(y)}{n^2} + 2\frac{n_{k,i}\left(n'(y) \right)^2}{n^3}.
+\end{multline}
+
+Производная скорости диффузии равна
+
+\begin{multline}
+  \frac{dV_{i}}{dy} = -\left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
+  + \mathcal{D} \frac{n'n_{i} - n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
+  + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left(\frac{n_{i}''}{n} - 2\frac{n_{i}'n'}{n^2} - \frac{n_{i}n''}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right) - \\
+  - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} 
+  - \left.\mathcal{D} \left(\frac{n_{k,i}''}{n} - 2\frac{n_{k,i}'n'}{n^2} - \frac{n_{k,i} n''}{n^2} + 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right].
+\end{multline}
+
+Уравнения, описывающие изменение численных плотностей, принимают вид
+
+\begin{multline}
+  -n_{i}' \left(\frac{n_{i}'n - n_{i}n'}{n^2} \mathcal{D} \left(\frac{n}{n_{i}} - 1 \right) - \mathcal{D} \frac{n_{k,i}'n - n_{k,i}n'}{n^2}\right) - \\  % no thermodiffusion
+  - n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
+  + \mathcal{D} \frac{n'n_{i} - n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
+  + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left(\frac{n_{i}''}{n} - 2\frac{n_{i}'n'}{n^2} - \frac{n_{i}n''}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right) - \\
+  - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
+  - \left.\mathcal{D} \left(\frac{n_{k,i}''}{n} - 2\frac{n_{k,i}'n'}{n^2} - \frac{n_{k,i} n''}{n^2} + 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right]
+  = R_{i}^{vibr},\quad i=1,\ldots L. \label{system-ni-sts}
+\end{multline}
+
+Видно, что в уравнение изменения численной плотности молекул на $i$-м колебательном уровне входят вторые производные от численных плотностей всех остальных колебательных уровней, поэтому систему уравнений (\ref{system-ni-sts}) имеет смысл для наглядности записать в матричном виде, т.к. для численного решения систему ОДУ на каждом шаге сначала придется решать линейную систему для нахождения значений $n_{i}''$.
+
+В матричном виде система выглядит следующим образом:
+
+\begin{equation}
+  \mathcal{D} A \cdot N = b,
+\end{equation}
+где $N=\left(n_{0}'', n_{1}'', \ldots, n_{L}''\right)$, $i$-ая компонента вектора $b$ определяется следующей формулой \textcolor{red}{(наверное, можно еще упростить, объединив $n_{k,i}$ и $n_{i}$, где возможно)}:
+
+\begin{multline}
+  b_{i} = n_{i}' \mathcal{D} \frac{n_{i}'n - n_{i}n'}{n n_{i}} + n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
+  + \mathcal{D} \frac{n'n_{i} + n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
+  + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left( - 2\frac{n_{i}'n'}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right)
+  - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
+  - \left.\mathcal{D} \left(- 2\frac{n_{k,i}'n'}{n^2}+ 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right] + R_{i}^{vibr},
+\end{multline}
+а компонент $a_{ij}$ ($i$-ая строка, $j$-й столбец) матрицы $A$ задается выражением
+
+\begin{equation}
+  a_{ij} = \frac{n_{i}}{n} - \delta_{ij}.
+\end{equation}
 
 % \begin{equation}
 %   \frac{d n}{d y} = n \frac{T'^2 \frac{\partial D_{T}}{\partial T} + D_{T} \frac{T dT'/dy - T'^2}{T}}{T' \left(D_{T} + n \frac{\partial D_{T}}{\partial n} \right)},
