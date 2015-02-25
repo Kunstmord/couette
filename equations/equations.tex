@@ -333,39 +333,51 @@
   \left(\frac{n}{n_{i}} - 1 \right) + \mathcal{D} \frac{n'(y)n_{i} - n_{i}'(y)n}{n_{i}^2}.
 \end{equation}
 
-Введем обозначение
+Здесь и далее для упрощения записи под величиной $n' (\partial \mathcal{A} / \partial n)$ (где $\mathcal{A}$ --- некая функция макропараметров) будем подразумевать выражение
 
 \begin{equation}
-  n_{k,i} = \sum_{k \neq i} n_{k}(y).
+  \sum_{i} \frac{\partial \mathcal{A}}{n_{i}}n_{i}'.
 \end{equation}
 
-Тогда величину $\sum_{k \neq i} d d_{k} / dy$ можно преобразовать:
+Скорость диффузии равна
+\begin{equation}
+  V_{i} = -\mathcal{D} \frac{n_{i}'n - n_{i}n'}{n_{i}n}.
+\end{equation}
 
-\begin{multline}
-  \sum_{k \neq i} \frac{d d_{k}}{d y} = \sum_{k \neq i} \left(\frac{n_{i}''(y)}{n} - 2\frac{n_{i}'(y)n'(y)}{n^2} - \frac{n_{i}n''(y)}{n^2} + 2\frac{n_{i}\left(n'(y) \right)^2}{n^3}\right) = \\
-  = \frac{n_{k,i}''(y)}{n} - 2\frac{n_{k,i}'(y)n'(y)}{n^2} - \frac{n_{k,i}'(y) n''(y)}{n^2} + 2\frac{n_{k,i}\left(n'(y) \right)^2}{n^3}.
-\end{multline}
+% Введем обозначение
+
+% \begin{equation}
+%   n_{k,i} = \sum_{k \neq i} n_{k}(y).
+% \end{equation}
+
+% Тогда величину $\sum_{k \neq i} d d_{k} / dy$ можно преобразовать:
+
+% \begin{multline}
+%   \sum_{k \neq i} \frac{d d_{k}}{d y} = \sum_{k \neq i} \left(\frac{n_{i}''(y)}{n} - 2\frac{n_{i}'(y)n'(y)}{n^2} - \frac{n_{i}n''(y)}{n^2} + 2\frac{n_{i}\left(n'(y) \right)^2}{n^3}\right) = \\
+%   = \frac{n_{k,i}''(y)}{n} - 2\frac{n_{k,i}'(y)n'(y)}{n^2} - \frac{n_{k,i}'(y) n''(y)}{n^2} + 2\frac{n_{k,i}\left(n'(y) \right)^2}{n^3}.
+% \end{multline}
 
 Производная скорости диффузии равна
 
-\begin{multline}
-  \frac{dV_{i}}{dy} = -\left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
-  + \mathcal{D} \frac{n'n_{i} - n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
-  + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left(\frac{n_{i}''}{n} - 2\frac{n_{i}'n'}{n^2} - \frac{n_{i}n''}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right) - \\
-  - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} 
-  - \left.\mathcal{D} \left(\frac{n_{k,i}''}{n} - 2\frac{n_{k,i}'n'}{n^2} - \frac{n_{k,i} n''}{n^2} + 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right].
-\end{multline}
+% \begin{multline}
+%   \frac{dV_{i}}{dy} = -\left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
+%   + \mathcal{D} \frac{n'n_{i} - n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
+%   + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left(\frac{n_{i}''}{n} - 2\frac{n_{i}'n'}{n^2} - \frac{n_{i}n''}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right) - \\
+%   - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} 
+%   - \left.\mathcal{D} \left(\frac{n_{k,i}''}{n} - 2\frac{n_{k,i}'n'}{n^2} - \frac{n_{k,i} n''}{n^2} + 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right],
+% \end{multline}
 
-Уравнения, описывающие изменение численных плотностей, принимают вид
+% можно переписать в более простом виде:
+\begin{equation}
+  \frac{dV_{i}}{dy} = -\left(\frac{\partial \mathcal{D}}{\partial n}n' - \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} - \mathcal{D}\left(\frac{n_{i}''}{n_{i}} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} - \frac{n''}{n} + \frac{\left(n'\right)^2}{n^2} \right).
+\end{equation}
+
+Уравнение, описывающее изменение заселенности $i$-го колебательного уровня принимает вид
 
 \begin{multline}
-  -n_{i}' \left(\frac{n_{i}'n - n_{i}n'}{n^2} \mathcal{D} \left(\frac{n}{n_{i}} - 1 \right) - \mathcal{D} \frac{n_{k,i}'n - n_{k,i}n'}{n^2}\right) - \\  % no thermodiffusion
-  - n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
-  + \mathcal{D} \frac{n'n_{i} - n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
-  + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left(\frac{n_{i}''}{n} - 2\frac{n_{i}'n'}{n^2} - \frac{n_{i}n''}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right) - \\
-  - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
-  - \left.\mathcal{D} \left(\frac{n_{k,i}''}{n} - 2\frac{n_{k,i}'n'}{n^2} - \frac{n_{k,i} n''}{n^2} + 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right]
-  = R_{i}^{vibr},\quad i=1,\ldots L. \label{system-ni-sts}
+  -n_{i}' \left(\mathcal{D} \frac{n_{i}'n - n_{i}n'}{n_{i}n} \right) - \\  % no thermodiffusion
+  - n_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} + \mathcal{D}\left(\frac{n_{i}''}{n_{i}} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} - \frac{n''}{n} + \frac{\left(n'\right)^2}{n^2} \right) \right]
+  = R_{i}^{vibr}.\label{system-ni-sts}
 \end{multline}
 
 Видно, что в уравнение изменения численной плотности молекул на $i$-м колебательном уровне входят вторые производные от численных плотностей всех остальных колебательных уровней, поэтому систему уравнений (\ref{system-ni-sts}) имеет смысл для наглядности записать в матричном виде, т.к. для численного решения систему ОДУ на каждом шаге сначала придется решать линейную систему для нахождения значений $n_{i}''$.
@@ -375,19 +387,47 @@
 \begin{equation}
   \mathcal{D} A \cdot N = b,
 \end{equation}
-где $N=\left(n_{0}'', n_{1}'', \ldots, n_{L}''\right)$, $i$-ая компонента вектора $b$ определяется следующей формулой \textcolor{red}{(наверное, можно еще упростить, объединив $n_{k,i}$ и $n_{i}$, где возможно)}:
+где $N=\left(n_{0}'', n_{1}'', \ldots, n_{L}''\right)$, $i$-ая компонента вектора $b$ определяется следующей формулой:
 
-\begin{multline}
-  b_{i} = n_{i}' \mathcal{D} \frac{n_{i}'n - n_{i}n'}{n n_{i}} + n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
-  + \mathcal{D} \frac{n'n_{i} + n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
-  + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left( - 2\frac{n_{i}'n'}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right)
-  - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
-  - \left.\mathcal{D} \left(- 2\frac{n_{k,i}'n'}{n^2}+ 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right] + R_{i}^{vibr},
-\end{multline}
+% \begin{multline}
+%   b_{i} = n_{i}' \mathcal{D} \frac{n_{i}'n - n_{i}n'}{n n_{i}} + n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
+%   + \mathcal{D} \frac{n'n_{i} + n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
+%   + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left( - 2\frac{n_{i}'n'}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right)
+%   - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
+%   - \left.\mathcal{D} \left(- 2\frac{n_{k,i}'n'}{n^2}+ 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right] + R_{i}^{vibr},
+% \end{multline}
+
+\begin{equation}
+  b_{i} = -\mathcal{D} \frac{n_{i}'n'}{n} + n_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} +  \mathcal{D}\frac{\left(n'\right)^2}{n^2}\right] + R_{i}^{vibr},
+\end{equation}
+
 а компонент $a_{ij}$ ($i$-ая строка, $j$-й столбец) матрицы $A$ задается выражением
 
 \begin{equation}
   a_{ij} = \frac{n_{i}}{n} - \delta_{ij}.
+\end{equation}
+
+Выражение $d q / dy$ имеет следующий вид:
+
+\begin{multline}
+  \frac{d q}{d y} = -\lambda' T'' - T' \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right) - \mathcal{D} \sum_{i}\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon^{i}_{j}\right>_{rot} \right)\frac{n_{i}'n - n_{i}n'}{n}T' - \\
+  - \mathcal{D} \sum_{i}\left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) n_{i}'\frac{n_{i}'n - n_{i}n'}{n_{i}n}
+  - \\
+  - \sum_{i}\left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) n_{i}\left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} + \right. \\ + \left. \mathcal{D}\left(\frac{n_{i}''}{n_{i}} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} - \frac{n''}{n} + \frac{\left(n'\right)^2}{n^2} \right) \right].
+\end{multline}
+
+После упрощения:
+
+\begin{multline}
+  \frac{d q}{d y} = -\lambda' T'' - T' \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right) - \mathcal{D} \sum_{i}\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon^{i}_{j}\right>_{rot} \right)\frac{n_{i}'n - n_{i}n'}{n}T' - \\
+  - \sum_{i} \left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \\
+  + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].
+\end{multline}
+
+Если считать, что вращательная энергия не зависит от колебательной, то
+
+\begin{equation}
+  \sum_{i}\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon^{i}_{j}\right>_{rot} \right)\frac{n_{i}'n - n_{i}n'}{n}T' = T'\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon_{j}\right>_{rot} \right) \sum_{i}\frac{n_{i}'n - n_{i}n'}{n} = 0.
 \end{equation}
 
 % \begin{equation}
