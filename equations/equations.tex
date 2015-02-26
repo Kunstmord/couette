@@ -244,27 +244,27 @@
 
 Значение численной плотности смеси бралось равным $n=1.4 \cdot 10^{20}$.
 
-Случай 1 (температуры стенок равны 1000K):
-\begin{center}
-\includegraphics[width=10cm]{plots/vel_tc3}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/T_tc3}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/eta_tc3}
-\end{center}
+% Случай 1 (температуры стенок равны 1000K):
+% \begin{center}
+% \includegraphics[width=10cm]{plots/vel_tc3}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/T_tc3}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/eta_tc3}
+% \end{center}
 
-Случай 2 (температуры стенок равны 273K):
-\begin{center}
-\includegraphics[width=10cm]{plots/vel_tc1}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/T_tc1}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/eta_tc1}
-\end{center}
+% Случай 2 (температуры стенок равны 273K):
+% \begin{center}
+% \includegraphics[width=10cm]{plots/vel_tc1}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/T_tc1}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/eta_tc1}
+% \end{center}
 
 \section{Производные основных величин (поуровневое приближение)}
 Рассмотрим течение чисто молекулярного газа в поуровневом приближении.
@@ -328,10 +328,10 @@
   \frac{d\mathcal{D}}{dy} = \frac{\partial \mathcal{D}}{\partial T} T'(y) + \frac{\partial \mathcal{D}}{\partial n} n'(y),
 \end{equation}
 
-\begin{equation}
-  \frac{d D_{ii}}{dy} = \left(\frac{\partial \mathcal{D}}{\partial T} \frac{d T}{d y} + \frac{\partial \mathcal{D}}{\partial n} n'(y) \right)
-  \left(\frac{n}{n_{i}} - 1 \right) + \mathcal{D} \frac{n'(y)n_{i} - n_{i}'(y)n}{n_{i}^2}.
-\end{equation}
+% \begin{equation}
+%   \frac{d D_{ii}}{dy} = \left(\frac{\partial \mathcal{D}}{\partial T} \frac{d T}{d y} + \frac{\partial \mathcal{D}}{\partial n} n'(y) \right)
+%   \left(\frac{n}{n_{i}} - 1 \right) + \mathcal{D} \frac{n'(y)n_{i} - n_{i}'(y)n}{n_{i}^2}.
+% \end{equation}
 
 Здесь и далее для упрощения записи под величиной $n' (\partial \mathcal{A} / \partial n)$ (где $\mathcal{A}$ --- некая функция макропараметров) будем подразумевать выражение
 
@@ -369,13 +369,13 @@
 
 % можно переписать в более простом виде:
 \begin{equation}
-  \frac{dV_{i}}{dy} = -\left(\frac{\partial \mathcal{D}}{\partial n}n' - \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} - \mathcal{D}\left(\frac{n_{i}''}{n_{i}} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} - \frac{n''}{n} + \frac{\left(n'\right)^2}{n^2} \right).
+  \frac{dV_{i}}{dy} = -\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} - \mathcal{D}\left(\frac{n_{i}''}{n_{i}} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} - \frac{n''}{n} + \frac{\left(n'\right)^2}{n^2} \right).
 \end{equation}
 
 Уравнение, описывающее изменение заселенности $i$-го колебательного уровня принимает вид
 
 \begin{multline}
-  -n_{i}' \left(\mathcal{D} \frac{n_{i}'n - n_{i}n'}{n_{i}n} \right) - \\  % no thermodiffusion
+  -n_{i}' \mathcal{D} \frac{n_{i}'n - n_{i}n'}{n_{i}n} - \\  % no thermodiffusion
   - n_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} + \mathcal{D}\left(\frac{n_{i}''}{n_{i}} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} - \frac{n''}{n} + \frac{\left(n'\right)^2}{n^2} \right) \right]
   = R_{i}^{vibr}.\label{system-ni-sts}
 \end{multline}
@@ -429,6 +429,12 @@
 \begin{equation}
   \sum_{i}\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon^{i}_{j}\right>_{rot} \right)\frac{n_{i}'n - n_{i}n'}{n}T' = T'\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon_{j}\right>_{rot} \right) \sum_{i}\frac{n_{i}'n - n_{i}n'}{n} = 0.
 \end{equation}
+
+Далее будем пользоваться этим предположением. Тогда уравнение энергии принимает вид
+
+\begin{multline}
+  - \eta \left(\frac{d v_{x}}{d y} \right)^2 = 0.
+\end{multline}
 
 % \begin{equation}
 %   \frac{d n}{d y} = n \frac{T'^2 \frac{\partial D_{T}}{\partial T} + D_{T} \frac{T dT'/dy - T'^2}{T}}{T' \left(D_{T} + n \frac{\partial D_{T}}{\partial n} \right)},
