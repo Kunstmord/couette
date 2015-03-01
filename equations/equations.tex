@@ -188,14 +188,13 @@
   v_{x}(y) = v_{wall}\frac{y}{Y},
 \end{equation}
 
-\textcolor{red}{Надо проверить/исправить}
 \begin{equation}
-  T(y) = \frac{\eta v_{x}'^2}{2\lambda'}y^2 + C_{1}y + C_{2} = \frac{\eta v_{wall}^2}{2\lambda'}\left(\frac{y}{Y}\right)^2 + C_{1}y + T_{wall,1},
+  T(y) = -\frac{\eta v_{x}'^2}{2\lambda'}y^2 + C_{1}y + C_{2} = -\frac{\eta v_{wall}^2}{2\lambda'}\left(\frac{y}{Y}\right)^2 + C_{1}y + T_{wall,1},
 \end{equation}
 где
 
 \begin{equation}
-  C_{1}= \frac{T_{wall,2} - T_{wall,1} -\frac{\eta v_{x}'^2}{2\lambda'}}{Y}.
+  C_{1}= \frac{T_{wall,2} - T_{wall,1} +\frac{\eta v_{x}'^2}{2\lambda'}}{Y}.
 \end{equation}
 
 Для чистого атомарного газа коэффициенты теплопроводности $\lambda'$ и сдвиговой вязкости $\eta$ вычисляются следующим образом:
@@ -424,16 +423,32 @@
   + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].
 \end{multline}
 
-Если считать, что вращательная энергия не зависит от колебательной, то
+Если считать, что вращательная энергия не зависит от колебательной (модель жесткого ротатора), то
 
 \begin{equation}
-  \sum_{i}\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon^{i}_{j}\right>_{rot} \right)\frac{n_{i}'n - n_{i}n'}{n}T' = T'\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon_{j}\right>_{rot} \right) \sum_{i}\frac{n_{i}'n - n_{i}n'}{n} = 0.
+  \sum_{i}\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon^{i}_{j}\right>_{rot} \right)\frac{n_{i}'n - n_{i}n'}{n}T' = T'\left(\frac{5}{2}k + \frac{\partial}{\partial T}\left<\varepsilon_{j}\right>_{rot} \right) \sum_{i}\frac{n_{i}'n - n_{i}n'}{n} = 0,
 \end{equation}
 
-Далее будем пользоваться этим предположением. Тогда уравнение энергии принимает вид
+и
 
 \begin{multline}
-  - \eta \left(\frac{d v_{x}}{d y} \right)^2 = 0.
+   \sum_{i} \left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \\
+  + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right] =  \sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \\
+  + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].
+\end{multline}
+
+Далее будем пользоваться моделью жесткого ротатора. Тогда уравнение энергии принимает вид
+
+\begin{multline}
+  - \eta \left(\frac{d v_{x}}{d y} \right)^2 -\lambda' T'' - T' \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right) - \\
+  - \sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right] = 0,
+\end{multline}
+
+после преобразования:
+
+\begin{multline}
+  T'' = -\frac{\eta}{\lambda'} \left(\frac{d v_{x}}{d y} \right)^2 - \frac{T'}{\lambda'} \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right) - \\
+  - \frac{1}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].
 \end{multline}
 
 % \begin{equation}
