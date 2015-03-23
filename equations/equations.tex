@@ -607,37 +607,37 @@
 Перепишем для удобства систему (\ref{ni-sts-final-dimless}) -- (\ref{T-sts-final-dimless}) как систему ОДУ первого порядка:
 
 \begin{equation}
-  \frac{d x_{i}}{d\zeta} = x_{i}',\quad i=1,\ldots,L,
+  \frac{d x_{i}}{d\zeta} = x_{i}',\quad i=1,\ldots,L,\label{eqn-dx_i-sts}
 \end{equation}
 
 \begin{equation}
-  \frac{d \xi}{d\zeta} = \xi', 
+  \frac{d \xi}{d\zeta} = \xi', \label{eqn-dxi-sts}
 \end{equation}
 
 \begin{equation}
-  \frac{d \tau}{d\zeta} = \tau', 
+  \frac{d \tau}{d\zeta} = \tau', \label{eqn-dtau-sts}
 \end{equation}
 
 \textcolor{red}{
 \begin{multline}
 \frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
   x_{i}' \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{x_{i}^2 \tilde{x}} + \left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\mathcal{D}x_{i}\tilde{x}} + \\
-  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{ni-sts-final-dimless}
+  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{eqn-d2x_i-sts}
 \end{multline}
 }
 
 \begin{equation}
-  \tau \sum_{i}\frac{d x_{i}'}{d \zeta} + \frac{d \tau'}{d \zeta}\sum_{i}x_{i} = -2\tau'\sum_{i}\frac{d x_{i}}{d \zeta},
+  \tau \sum_{i}\frac{d x_{i}'}{d \zeta} + \frac{d \tau'}{d \zeta}\sum_{i}x_{i} = -2\tau'\sum_{i}\frac{d x_{i}}{d \zeta},\label{eqn-d2x_i-sts-additional}
 \end{equation}
 
 \begin{equation}
-  \frac{d \xi'}{d\zeta} = -\frac{1}{\eta} \xi' \tau' \frac{\partial \eta}{\partial \tau},
+  \frac{d \xi'}{d\zeta} = -\frac{1}{\eta} \xi' \tau' \frac{\partial \eta}{\partial \tau},\label{eqn-d2xi-sts}
 \end{equation}
 
 \textcolor{red}{
 \begin{multline}
   \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) = -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\tau'}{\lambda'} \left(\tau' \frac{\partial \lambda'}{\partial \tau} + \tilde{x}' \frac{\partial \lambda'}{\partial \tilde{x}} \right) - \\
-  - \frac{n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\tilde{x}} + \mathcal{D}\left(\frac{x_{i}\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{x_{i}'\tilde{x}'}{\tilde{x}} \right)  \right].\label{T-sts-final-dimless}
+  - \frac{n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\tilde{x}} + \mathcal{D}\left(\frac{x_{i}\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{x_{i}'\tilde{x}'}{\tilde{x}} \right)  \right].\label{eqn-dtau-sts}
 \end{multline}
 }
 
