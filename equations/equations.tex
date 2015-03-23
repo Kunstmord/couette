@@ -578,16 +578,6 @@
   - \frac{1}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} + \mathcal{D}\left(\frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].\label{T-sts-final}
 \end{multline}
 
-\textcolor{red}{При этом (переписать через безразмерные переменные и вставить дальше в тексте)}
-
-\begin{equation}
-  \frac{\partial \mathcal{D}}{\partial n} = -\frac{3kT}{8m\Omega^{(1,1)}} \frac{1}{n^2},
-\end{equation}
-
-\begin{equation}
-  \frac{\partial \mathcal{D}}{\partial T} = \frac{3k}{8nm} \frac{\Omega^{(1,1)} - T \frac{\partial \Omega^{(1,1)}}{\partial T}}{\left(\Omega^{(1,1)}\right)^2}.
-\end{equation}
-
 Введем безразмерные переменные:
 \begin{equation}
   \zeta = \frac{y}{Y},\:x_{i} = \frac{n_{i}}{n_{wall,2}},\:\tilde{x}=\frac{n}{n_{wall,2}},\:\xi=\frac{v_{x}}{v_{wall}},\:\tau=\frac{T}{T_{wall,2}}.
@@ -615,5 +605,51 @@
 \end{multline}
 
 Перепишем для удобства систему (\ref{ni-sts-final-dimless}) -- (\ref{T-sts-final-dimless}) как систему ОДУ первого порядка:
+
+\begin{equation}
+  \frac{d x_{i}}{d\zeta} = x_{i}',\quad i=1,\ldots,L,
+\end{equation}
+
+\begin{equation}
+  \frac{d \xi}{d\zeta} = \xi', 
+\end{equation}
+
+\begin{equation}
+  \frac{d \tau}{d\zeta} = \tau', 
+\end{equation}
+
+\textcolor{red}{
+\begin{multline}
+\frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
+  x_{i}' \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{x_{i}^2 \tilde{x}} + \left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\mathcal{D}x_{i}\tilde{x}} + \\
+  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{ni-sts-final-dimless}
+\end{multline}
+}
+
+\begin{equation}
+  \tau \sum_{i}\frac{d x_{i}'}{d \zeta} + \frac{d \tau'}{d \zeta}\sum_{i}x_{i} = -2\tau'\sum_{i}\frac{d x_{i}}{d \zeta},
+\end{equation}
+
+\begin{equation}
+  \frac{d \xi'}{d\zeta} = -\frac{1}{\eta} \xi' \tau' \frac{\partial \eta}{\partial \tau},
+\end{equation}
+
+\textcolor{red}{
+\begin{multline}
+  \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) = -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\tau'}{\lambda'} \left(\tau' \frac{\partial \lambda'}{\partial \tau} + \tilde{x}' \frac{\partial \lambda'}{\partial \tilde{x}} \right) - \\
+  - \frac{n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\tilde{x}} + \mathcal{D}\left(\frac{x_{i}\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{x_{i}'\tilde{x}'}{\tilde{x}} \right)  \right].\label{T-sts-final-dimless}
+\end{multline}
+}
+
+Итого, имеем систему из $2L+4$ ОДУ 1го порядка.
+
+Выпишем производные коэффициента диффузии по безразмерным величинам:
+\begin{equation}
+  \frac{\partial \mathcal{D}}{\partial \tilde{x}} = \frac{\partial \mathcal{D}}{\partial n}\frac{\partial n}{\partial \tilde{x}} = -\frac{3kT}{8m\Omega^{(1,1)}} \frac{n_{wall,2}}{n^2},
+\end{equation}
+
+\begin{equation}
+  \frac{\partial \mathcal{D}}{\partial \tau} = \frac{\partial \mathcal{D}}{\partial T}\frac{\partial T}{\partial \tau} = T_{wall,2}\frac{3k}{8nm} \frac{\Omega^{(1,1)} - T \frac{\partial \Omega^{(1,1)}}{\partial T}}{\left(\Omega^{(1,1)}\right)^2}.
+\end{equation}
 
 \end{document}
