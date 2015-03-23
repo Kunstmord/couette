@@ -63,10 +63,6 @@
   \mathbf{P} : \nabla \mathbf{v} = \eta \left(\frac{d v_{x}}{d y} \right)^2
 \end{equation}
 
-% \begin{equation}
-%   \rho \frac{dU}{dt} + \nabla \cdot \mathbf{q} + \mathbf{P} : \nabla \mathbf{v} = 0.
-% \end{equation}
-
 \section{Производные основных величин (однотемпературное приближение)}
 
 \begin{equation}
@@ -136,42 +132,16 @@
 
 \subsection{Однокомпонентная смесь без внутренних степеней свободы}
 Рассмотрим однокомпонентное течение без внутренних степенй свободы.
-В таком течении $V_{c}$ = 0, $\frac{\partial n}{\partial y} = 0$, $\eta=\eta(T)$, $\lambda'=\lambda'(T)$.
+В таком течении $V_{c}$ = 0, $\eta=\eta(T)$, $\lambda'=\lambda'(T)$.
 
-% Энтальпия для такого течения вычисляется по формуле
-% \begin{equation}
-%   mh = \frac{5}{2}kT + \varepsilon_{c}.
-% \end{equation}
-
-Уравнение теплопроводности принимает вид:
-
-% \begin{multline}
-%   \eta \left(\frac{d v_{x}}{d y} \right)^2 -\lambda' T'' - T' \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right)
-%   + n' m h V + \frac{5}{2}nkT' V + \\
-%   + nmh \left(- \left(T' \frac{\partial D_{T}}{\partial T} + \frac{\partial D_{T}}{\partial n} n' \right) \frac{1}{T} T' - D_{T} \frac{TT'' - T'^2}{T^2} \right)=0
-% \end{multline}
-
-Систему уравнений (\ref{densityeqn}) -- (\ref{energyeqn}) можно свести к системе ОДУ первого порядка:
-
-% \begin{equation}
-%   D_{T} T' \frac{d n}{d y} + n\left(\left(T' \frac{\partial D_{T}}{\partial T} + \frac{\partial D_{T}}{\partial n} n'(y)\right)
-%    T' + D_{T} \frac{T dT' / dy - T'^2}{T} \right) = 0
-% \end{equation}
+Систему уравнений (\ref{densityeqn}) -- (\ref{energyeqn}) можно переписать в виде (с учетом того, что уравнение (\ref{densityeqn}) тождественно обращается в 0):
 
 \begin{equation}
-  \frac{d v_{x}}{d y} = v_{x}',\label{eqn-dimensional-dv}
+  v_{x}'' = -\frac{1}{\eta} v_{x}' T' \frac{\partial \eta}{\partial T},\label{eqn-dimensional-d2v}
 \end{equation}
 
 \begin{equation}
-  \frac{d T}{d y} = T',\label{eqn-dimensional-dT}
-\end{equation}
-
-\begin{equation}
-  \frac{d v_{x}'}{d y} = -\frac{1}{\eta} v_{x}' T' \frac{\partial \eta}{\partial T},\label{eqn-dimensional-d2v}
-\end{equation}
-
-\begin{equation}
-   \frac{dT'}{dy} = -\frac{\eta v_{x}'^2}{\lambda'}
+   T'' = -\frac{\eta v_{x}'^2}{\lambda'}
   - \frac{1}{\lambda'} T'^2 \frac{\partial \lambda'}{\partial T}.\label{eqn-dimensional-d2T}
 \end{equation}
 
@@ -207,63 +177,154 @@
   \eta = \frac{5kT}{8\Omega^{(2,2)}}.
 \end{equation}
 
-Систему (\ref{eqn-dimensional-dv} -- \ref{eqn-dimensional-d2T}) можно привести к безразмерному виду, введя следующие переменные:
+Систему (\ref{eqn-dimensional-d2v}) -- (\ref{eqn-dimensional-d2T}) можно привести к безразмерному виду, введя следующие переменные:
 
 \begin{equation}
-  \zeta = \frac{y}{Y},\quad x_{1} = \frac{v_{x}}{v_{wall}},\quad x_{2} = \frac{T}{T_{wall, 2}}.
+  \zeta = \frac{y}{Y},\quad \xi = \frac{v_{x}}{v_{wall}},\quad \tau = \frac{T}{T_{wall, 2}}.
 \end{equation}
 
-Тогда $\frac{\partial }{\partial y}=\frac{\partial }{\partial \zeta}\frac{1}{Y}$, $\frac{\partial }{\partial T}=\frac{\partial }{\partial x_{2}}\frac{1}{T_{wall,2}}$, и обезразмеренная система (\ref{eqn-dimensional-dv} -- \ref{eqn-dimensional-d2T}) имеет вид
+Тогда $\frac{\partial }{\partial y}=\frac{\partial }{\partial \zeta}\frac{1}{Y}$, $\frac{\partial }{\partial T}=\frac{\partial }{\partial \tau}\frac{1}{T_{wall,2}}$, и обезразмеренная система (\ref{eqn-dimensional-d2v}) -- (\ref{eqn-dimensional-d2T}) имеет вид
 
-\begin{equation}
-  \frac{d x_{1}}{d \zeta} = Y x_{1}',\label{eqn-dimensionless-dx1}
-\end{equation}
+% \begin{equation}
+%   \frac{d x_{1}}{d \zeta} = Y x_{1}',\label{eqn-dimensionless-dx1}
+% \end{equation}
 
-\begin{equation}
-  \frac{d x_{2}}{d \zeta} = Y x_{2}',\label{eqn-dimensionless-dx2}
-\end{equation}
-
-\begin{equation}
-  \frac{d x_{1}'}{d \zeta} = -\frac{Y}{\eta}x_{1}'x_{2}'\frac{\partial \eta}{\partial x_{2}},\label{eqn-dimensionless-dx21}
-\end{equation}
+% \begin{equation}
+%   \frac{d x_{2}}{d \zeta} = Y x_{2}',\label{eqn-dimensionless-dx2}
+% \end{equation}
 
 \begin{equation}
-  \frac{d x_{2}'}{d \zeta} = -\frac{Y}{\lambda'}\left(\frac{\eta}{T_{wall,2}}v_{wall}^{2}x_{1}'^2+x_{2}'^{2}\frac{\partial \lambda'}{\partial x_{2}} \right).
+  \frac{d^2 \xi}{d \zeta^2} = -\frac{1}{\eta}\frac{d \xi}{d \zeta}\frac{d \tau}{d \zeta}\frac{\partial \eta}{\partial \tau},
 \end{equation}
+
+\begin{equation}
+  \frac{d^2 \tau}{d \zeta^2} = -\frac{1}{\lambda'}\left(\frac{\eta}{T_{wall,2}}v_{wall}^{2}\left(\frac{d \xi}{d \zeta}\right)^{2}+\left(\frac{d \tau}{d \zeta}\right)^{2}\frac{\partial \lambda'}{\partial \tau} \right).
+\end{equation}
+
+Переписывая эту систему уравнений как систему ОДУ первого порядка, имеем:
+\begin{equation}
+  \frac{d \xi}{d \zeta} = \xi',
+\end{equation}
+
+\begin{equation}
+  \frac{d \tau}{d \zeta} = \tau',
+\end{equation}
+
+\begin{equation}
+  \frac{d \xi'}{d \zeta} = -\frac{1}{\eta}\xi'\tau'\frac{\partial \eta}{\partial \tau},\label{eqn-dimensionless-dx21}
+\end{equation}
+
+\begin{equation}
+  \frac{d \tau'}{d \zeta} = -\frac{1}{\lambda'}\left(\frac{\eta}{T_{wall,2}}v_{wall}^{2}\xi'^{2}+\tau'^{2}\frac{\partial \lambda'}{\partial \tau} \right).
+\end{equation}
+% Систему уравнений (\ref{densityeqn}) -- (\ref{energyeqn}) можно свести к системе ОДУ первого порядка:
+
+% \begin{equation}
+%   \frac{d v_{x}}{d y} = v_{x}',\label{eqn-dimensional-dv}
+% \end{equation}
+
+% \begin{equation}
+%   \frac{d T}{d y} = T',\label{eqn-dimensional-dT}
+% \end{equation}
+
+% \begin{equation}
+%   \frac{d v_{x}'}{d y} = -\frac{1}{\eta} v_{x}' T' \frac{\partial \eta}{\partial T},\label{eqn-dimensional-d2v}
+% \end{equation}
+
+% \begin{equation}
+%    \frac{dT'}{dy} = -\frac{\eta v_{x}'^2}{\lambda'}
+%   - \frac{1}{\lambda'} T'^2 \frac{\partial \lambda'}{\partial T}.\label{eqn-dimensional-d2T}
+% \end{equation}
+
+% Граничные условия имеют вид
+
+% \begin{equation}
+%   v_{x}(0) = 0,\:v_{x}(Y) = v_{wall},\:T(0) = T_{wall,1},\:T(Y) = T_{wall,2}.
+% \end{equation}
+% где $Y$ --- высота канала.
+
+% В случае, если $\frac{\partial \lambda'}{\partial T} = \frac{\partial \eta}{\partial T} = 0$, то задача имеет аналитическое решение:
+
+% \begin{equation}
+%   v_{x}(y) = v_{wall}\frac{y}{Y},
+% \end{equation}
+
+% \begin{equation}
+%   T(y) = -\frac{\eta v_{x}'^2}{2\lambda'}y^2 + C_{1}y + C_{2} = -\frac{\eta v_{wall}^2}{2\lambda'}\left(\frac{y}{Y}\right)^2 + C_{1}y + T_{wall,1},
+% \end{equation}
+% где
+
+% \begin{equation}
+%   C_{1}= \frac{T_{wall,2} - T_{wall,1} +\frac{\eta v_{x}'^2}{2\lambda'}}{Y}.
+% \end{equation}
+
+% Для чистого атомарного газа коэффициенты теплопроводности $\lambda'$ и сдвиговой вязкости $\eta$ вычисляются следующим образом:
+
+% \begin{equation}
+%   \lambda' = \frac{75k^2T}{32m\Omega^{(2,2)}},
+% \end{equation}
+
+% \begin{equation}
+%   \eta = \frac{5kT}{8\Omega^{(2,2)}}.
+% \end{equation}
+
+% Систему (\ref{eqn-dimensional-dv} -- \ref{eqn-dimensional-d2T}) можно привести к безразмерному виду, введя следующие переменные:
+
+% \begin{equation}
+%   \zeta = \frac{y}{Y},\quad x_{1} = \frac{v_{x}}{v_{wall}},\quad x_{2} = \frac{T}{T_{wall, 2}}.
+% \end{equation}
+
+% Тогда $\frac{\partial }{\partial y}=\frac{\partial }{\partial \zeta}\frac{1}{Y}$, $\frac{\partial }{\partial T}=\frac{\partial }{\partial x_{2}}\frac{1}{T_{wall,2}}$, и обезразмеренная система (\ref{eqn-dimensional-dv}) -- (\ref{eqn-dimensional-d2T}) имеет вид
+
+% \begin{equation}
+%   \frac{d x_{1}}{d \zeta} = Y x_{1}',\label{eqn-dimensionless-dx1}
+% \end{equation}
+
+% \begin{equation}
+%   \frac{d x_{2}}{d \zeta} = Y x_{2}',\label{eqn-dimensionless-dx2}
+% \end{equation}
+
+% \begin{equation}
+%   \frac{d x_{1}'}{d \zeta} = -\frac{Y}{\eta}x_{1}'x_{2}'\frac{\partial \eta}{\partial x_{2}},\label{eqn-dimensionless-dx21}
+% \end{equation}
+
+% \begin{equation}
+%   \frac{d x_{2}'}{d \zeta} = -\frac{Y}{\lambda'}\left(\frac{\eta}{T_{wall,2}}v_{wall}^{2}x_{1}'^2+x_{2}'^{2}\frac{\partial \lambda'}{\partial x_{2}} \right).
+% \end{equation}
 
 \subsection{Расчеты для чистого аргона}
 Предполагалось отсутствие скачка температуры у стенки, а скорость скольжения выражалась по формуле:
 
 \begin{equation}
-  v_{slip} = \sigma_{P} \frac{\eta v_{m}}{nkT}\frac{d v_{x}}{d \nu} + \sigma_{T}\frac{\eta}{\rho}\frac{d \ln T}{d \nu},
+  v_{slip} = \sigma_{P} \frac{\eta v_{m}}{nkT}\frac{d v_{x}}{d \nu},
 \end{equation}
 где $v_{m} = \sqrt{2kT_{wall} / m}$, $\nu$ --- нормаль к поверхности; для нижней стенки ($y=0$) $d / d \nu$ = $d / d y$, для верхней ($y=Y$) $d / d \nu$ = $-d / d y$.
 
-Для чисто диффузного отражения коэффициенты равны $\sigma_{P} = 0.8862$, $\sigma_{T} = 0.75$.
+Для чисто диффузного отражения коэффициенты равны $\sigma_{P} = 0.8862$.
 
 Значение численной плотности смеси бралось равным $n=1.4 \cdot 10^{20}$.
 
-% Случай 1 (температуры стенок равны 1000K):
-% \begin{center}
-% \includegraphics[width=10cm]{plots/vel_tc3}
-% \end{center}
-% \begin{center}
-% \includegraphics[width=10cm]{plots/T_tc3}
-% \end{center}
-% \begin{center}
-% \includegraphics[width=10cm]{plots/eta_tc3}
-% \end{center}
+Случай 1 (температуры стенок равны 1000K):
+\begin{center}
+\includegraphics[width=10cm]{plots/vel_tc3}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/T_tc3}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/eta_tc3}
+\end{center}
 
-% Случай 2 (температуры стенок равны 273K):
-% \begin{center}
-% \includegraphics[width=10cm]{plots/vel_tc1}
-% \end{center}
-% \begin{center}
-% \includegraphics[width=10cm]{plots/T_tc1}
-% \end{center}
-% \begin{center}
-% \includegraphics[width=10cm]{plots/eta_tc1}
-% \end{center}
+Случай 2 (температуры стенок равны 273K):
+\begin{center}
+\includegraphics[width=10cm]{plots/vel_tc1}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/T_tc1}
+\end{center}
+\begin{center}
+\includegraphics[width=10cm]{plots/eta_tc1}
+\end{center}
 
 \section{Производные основных величин (поуровневое приближение)}
 Рассмотрим течение чисто молекулярного газа в поуровневом приближении.
@@ -274,16 +335,6 @@
 \end{equation}
 
 Скорость диффузии:
-
-% \begin{equation}
-%    \mathbf{V}_{i} = -D_{ii}\mathbf{d}_{i} -D \sum_{k \neq i}\mathbf{d}_{k} - D_{T}\nabla \ln T,
-% \end{equation}
-
-% тепловой поток:
-
-% \begin{equation}
-%   \mathbf{q} = -\lambda' \nabla T - p D_{T} \mathbf{d} + \sum_{i} \left(\frac{5}{2}kT + \left<\varepsilon^{i}_{j} \right>_{rot} + \varepsilon_{i} + \varepsilon \right) n_{i} \mathbf{V}_{i}.
-% \end{equation}
 
 \begin{equation}
    \mathbf{V}_{i} = -D_{ii}\mathbf{d}_{i} -D \sum_{k \neq i}\mathbf{d}_{k},
@@ -319,9 +370,9 @@
   d_{i} = \frac{n_{i}'(y)n - n_{i}n'(y)}{n^2},
 \end{equation}
 
-\begin{equation}
-  \frac{d d_{i}}{d y} = \frac{n_{i}''(y)}{n} - 2\frac{n_{i}'(y)n'(y)}{n^2} - \frac{n_{i}n''(y)}{n^2} + 2\frac{n_{i}\left(n'(y) \right)^2}{n^3},
-\end{equation}
+% \begin{equation}
+%   \frac{d d_{i}}{d y} = \frac{n_{i}''(y)}{n} - 2\frac{n_{i}'(y)n'(y)}{n^2} - \frac{n_{i}n''(y)}{n^2} + 2\frac{n_{i}\left(n'(y) \right)^2}{n^3},
+% \end{equation}
 
 \begin{equation}
   \frac{d\mathcal{D}}{dy} = \frac{\partial \mathcal{D}}{\partial T} T'(y) + \frac{\partial \mathcal{D}}{\partial n} n'(y),
@@ -379,32 +430,87 @@
   = R_{i}^{vibr}.\label{system-ni-sts}
 \end{multline}
 
-Видно, что в уравнение изменения численной плотности молекул на $i$-м колебательном уровне входят вторые производные от численных плотностей всех остальных колебательных уровней, поэтому систему уравнений (\ref{system-ni-sts}) имеет смысл для наглядности записать в матричном виде, т.к. для численного решения систему ОДУ на каждом шаге сначала придется решать линейную систему для нахождения значений $n_{i}''$.
+Видно, что в уравнение изменения численной плотности молекул на $i$-м колебательном уровне входят вторые производные от численных плотностей всех остальных колебательных уровней, поэтому систему уравнений (\ref{system-ni-sts}) можно рассматривать как линейную систему относительно величин $n_{i}''$. Эта система является линейно зависимой (сумма всех уравнений тождественно равна 0), поэтому необходимо еще одно соотношение, связывающее вторые производные заселенностей колебательных уровней.
+% 
+%  имеет смысл для наглядности записать в матричном виде.
 
-В матричном виде система выглядит следующим образом:
+% В матричном виде система выглядит следующим образом:
+
+% \begin{equation}
+%   \mathcal{D} A \cdot N = b,\label{system-ni-matrix}
+% \end{equation}
+% где $N=\left(n_{0}'', n_{1}'', \ldots, n_{L}''\right)$, $i$-ая компонента вектора $b$ определяется следующей формулой:
+
+% % \begin{multline}
+% %   b_{i} = n_{i}' \mathcal{D} \frac{n_{i}'n - n_{i}n'}{n n_{i}} + n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
+% %   + \mathcal{D} \frac{n'n_{i} + n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
+% %   + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left( - 2\frac{n_{i}'n'}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right)
+% %   - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
+% %   - \left.\mathcal{D} \left(- 2\frac{n_{k,i}'n'}{n^2}+ 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right] + R_{i}^{vibr},
+% % \end{multline}
+
+% \begin{equation}
+%   b_{i} = -\mathcal{D} \frac{n_{i}'n'}{n} + n_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} +  \mathcal{D}\frac{\left(n'\right)^2}{n^2}\right] + R_{i}^{vibr},
+% \end{equation}
+
+% а компонент $a_{ij}$ ($i$-ая строка, $j$-й столбец) матрицы $A$ задается выражением
+
+% \begin{equation}
+%   a_{ij} = \frac{n_{i}}{n} - \delta_{ij}.
+% \end{equation}
+
+% Эта матрица является вырожденной (легко проверить, что сумма всех строк равна 0), поэтому необходимо еще одно соотношение, связывающее вторые производные заселенностей колебательных уровней.
+Уравнение движения в проекции на ось $y$ дает уравнение:
 
 \begin{equation}
-  \mathcal{D} A \cdot N = b,
+  \frac{d}{dy}\left(p-p_{rel} \right)=0.
 \end{equation}
-где $N=\left(n_{0}'', n_{1}'', \ldots, n_{L}''\right)$, $i$-ая компонента вектора $b$ определяется следующей формулой:
+
+Если пренебречь релаксационным давлением $p_{rel}$, с учетом выражения $p=nkT$ имеем:
+
+\begin{equation}
+  n'kT + nkT' = 0.
+\end{equation}
+Продифференцировав это выражение еще раз, получим связь между вторыми производными числовых плотностей и температуры:
+
+\begin{equation}
+  n''T + 2n'T' + nT'' = 0.\label{eqn-nderivative-relation}
+\end{equation}
+
+Таким образом, в системе (\ref{system-ni-sts}) одно уравнение надо заменить соотношением (\ref{eqn-nderivative-relation}) и рассматривать систему совместно с уравнением энергии (как линейную систему относительно вторых производных числовых плотностей и второй производной температуры).
+
+% Сложим вместе все уравнения (\ref{system-ni-sts}) и получим соотношение:
+
+% \begin{equation}
+%   \sum_{i}R^{vibr}_{i}=0,
+% \end{equation}
+% что равносильно формуле
+
+% \begin{equation}
+%   \sum_{ii'kk'}\left(n_{i'}n_{k'}k^{k'k}_{i'i} - n_{i}n_{k}k^{kk'}_{ii'} \right) = 0. \label{R_vibr_relation}
+% \end{equation}
+
+% Так как это соотношение выполняется в любой точке течения, то вторая производная от него также будет равна 0 в любой точке течения.
+% Продифференцировав выражение (\ref{R_vibr_relation}) дважды, имеем:
 
 % \begin{multline}
-%   b_{i} = n_{i}' \mathcal{D} \frac{n_{i}'n - n_{i}n'}{n n_{i}} + n_{i} \left[\left\{\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right)\left(\frac{n}{n_{i}} - 1 \right) 
-%   + \mathcal{D} \frac{n'n_{i} + n n_{i}'}{n_{i}^2} \right\} \frac{n_{i}'n - n_{i}n'}{n^2} \right. + \\
-%   + \mathcal{D} \left(\frac{n}{n_{i}} - 1\right) \left( - 2\frac{n_{i}'n'}{n^2} + 2\frac{n_{i}\left(n' \right)^2}{n^3} \right)
-%   - \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{k,i}'n - n_{k,i}n'}{n^2} - \\
-%   - \left.\mathcal{D} \left(- 2\frac{n_{k,i}'n'}{n^2}+ 2\frac{n_{k,i}\left(n' \right)^2}{n^3} \right) \right] + R_{i}^{vibr},
+%   \sum_{ii'kk'}\left(n_{i'}''n_{k'}k^{k'k}_{i'i} + n_{i'}n_{k'}''k^{k'k}_{i'i} + n_{i'}n_{k'}\left(k^{k'k}_{i'i}\right)'' + \right. \\
+%    + 2n_{i'}'n_{k'}'k^{k'k}_{i'i} + 2n_{i'}'n_{k'}\left(k^{k'k}_{i'i}\right)' + 2n_{i'}n_{k'}'\left(k^{k'k}_{i'i}\right)' - \\
+%    -  n_{i}''n_{k}k^{kk'}_{ii'} - n_{i}n_{k}''k^{kk'}_{ii'} - n_{i}n_{k}\left(k^{kk'}_{ii'}\right)'' - \\
+%    - \left. 2n_{i}'n_{k}'k^{kk'}_{ii'} - 2n_{i}'n_{k}\left(k^{kk'}_{ii'}\right)' - 2n_{i}n_{k}'\left(k^{kk'}_{ii'}\right)' \right). \label{ni_relation}
 % \end{multline}
 
-\begin{equation}
-  b_{i} = -\mathcal{D} \frac{n_{i}'n'}{n} + n_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n_{i}n} +  \mathcal{D}\frac{\left(n'\right)^2}{n^2}\right] + R_{i}^{vibr},
-\end{equation}
+% В поуровневом приближении в нулевом приближении метода Энскога--Чепмена коэффициенты скоростей переходов колебательной энергии являются функциями температуры, поэтому можно записать
 
-а компонент $a_{ij}$ ($i$-ая строка, $j$-й столбец) матрицы $A$ задается выражением
+% \begin{equation}
+%   \left(k^{k'k}_{i'i}\right)' = \frac{\partial k^{k'k}_{i'i}}{\partial T}T',
+% \end{equation}
 
-\begin{equation}
-  a_{ij} = \frac{n_{i}}{n} - \delta_{ij}.
-\end{equation}
+% \begin{equation}
+%   \left(k^{k'k}_{i'i}\right)'' = \frac{\partial k^{k'k}_{i'i}}{\partial T}T'' + \frac{\partial^2 k^{k'k}_{i'i}}{\partial T^2}\left(T' \right)^2.
+% \end{equation}
+
+% Таким образом, одно из уравнений в системе (\ref{system-ni-sts}) надо заменить на соотношение (\ref{ni_relation}). При этом систему надо также дополнить уравнением теплопроводности, в которое входит вторая производная температуры $T$. Тогда получим систему из $L+1$ (L --- число колебательных уровней у рассматриваемого молекулярного сорта) линейного уравнения относительно вторых производных численных плотностей и температуры течения.
 
 Выражение $d q / dy$ имеет следующий вид:
 
@@ -451,23 +557,63 @@
   - \frac{1}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].
 \end{multline}
 
-% \begin{equation}
-%   \frac{d n}{d y} = n \frac{T'^2 \frac{\partial D_{T}}{\partial T} + D_{T} \frac{T dT'/dy - T'^2}{T}}{T' \left(D_{T} + n \frac{\partial D_{T}}{\partial n} \right)},
-% \end{equation}
+Таким образом, система уравнений в итоге принимает следующий вид:
 
-% \begin{equation}
-%   \frac{d v_{x}'}{d y} = -\frac{1}{\eta} v_{x}' \left(T' \frac{\partial \eta}{\partial T} + n' \frac{\partial \eta}{\partial n} \right),
-% \end{equation}
+\begin{multline}
+\frac{n''}{n} - \frac{n_{i}''}{n_{i}} = 
+  n_{i}' \frac{n_{i}'n - n_{i}n'}{n_{i}^2 n} + \\
+  + \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{\mathcal{D}n_{i}n} + \frac{\left(n'\right)^2}{n^2} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} + \frac{R_{i}^{vibr}}{\mathcal{D}n_{i}},\:i=1,\ldots,L-1,\label{ni-sts-final}
+\end{multline}
 
-% \begin{multline}
-%    \frac{dT'}{dy} = \frac{\eta v_{x}'^2}{\lambda' + D_{T} n \tau(T) }
-%   - \frac{T'}{\lambda' + D_{T} n\tau(T)} \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} + \right. \\ + \left. n'\tau(T)D_{T} + \frac{5}{2}nkD_{T}\frac{T'}{T}
-%   + n\tau(T) \left(T' \frac{\partial D_{T}}{\partial T} + n' \frac{\partial D_{T}}{\partial n} + D_{T} \frac{T'}{T} \right)\right),
-% \end{multline}
-% где
+\begin{equation}
+  n''T + nT'' = -2n'T',
+\end{equation}
 
-% \begin{equation}
-%   \tau(T) = \frac{5}{2}k + \frac{\varepsilon}{T}.
-% \end{equation}
+\begin{equation}
+  v_{x}'' = -\frac{1}{\eta} v_{x}' T' \frac{\partial \eta}{\partial T},
+\end{equation}
+
+\begin{multline}
+  T'' + \frac{\mathcal{D}}{\lambda'}\sum_{i}\varepsilon_{i}\left(n_{i}'' - \frac{n_{i}}{n}n'' \right) = -\frac{\eta}{\lambda'} \left(v_{x}' \right)^2 - \frac{T'}{\lambda'} \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right) - \\
+  - \frac{1}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} + \mathcal{D}\left(\frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].\label{T-sts-final}
+\end{multline}
+
+\textcolor{red}{При этом (переписать через безразмерные переменные и вставить дальше в тексте)}
+
+\begin{equation}
+  \frac{\partial \mathcal{D}}{\partial n} = -\frac{3kT}{8m\Omega^{(1,1)}} \frac{1}{n^2},
+\end{equation}
+
+\begin{equation}
+  \frac{\partial \mathcal{D}}{\partial T} = \frac{3k}{8nm} \frac{\Omega^{(1,1)} - T \frac{\partial \Omega^{(1,1)}}{\partial T}}{\left(\Omega^{(1,1)}\right)^2}.
+\end{equation}
+
+Введем безразмерные переменные:
+\begin{equation}
+  \zeta = \frac{y}{Y},\:x_{i} = \frac{n_{i}}{n_{wall,2}},\:\tilde{x}=\frac{n}{n_{wall,2}},\:\xi=\frac{v_{x}}{v_{wall}},\:\tau=\frac{T}{T_{wall,2}}.
+\end{equation}
+
+Тогда систему (\ref{ni-sts-final}) -- (\ref{T-sts-final}) можно переписать в безразмерном виде (производные берутся уже по безразмерной координате $\zeta$):
+
+\begin{multline}
+\frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
+  x_{i}' \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{x_{i}^2 \tilde{x}} + \left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\mathcal{D}x_{i}\tilde{x}} + \\
+  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{ni-sts-final-dimless}
+\end{multline}
+
+\begin{equation}
+  \tilde{x}''\tau + \tilde{x}\tau'' = -2\tilde{x}'\tau',
+\end{equation}
+
+\begin{equation}
+  \xi'' = -\frac{1}{\eta} \xi' \tau' \frac{\partial \eta}{\partial \tau},
+\end{equation}
+
+\begin{multline}
+  \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) = -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\tau'}{\lambda'} \left(\tau' \frac{\partial \lambda'}{\partial \tau} + \tilde{x}' \frac{\partial \lambda'}{\partial \tilde{x}} \right) - \\
+  - \frac{n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\tilde{x}} + \mathcal{D}\left(\frac{x_{i}\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{x_{i}'\tilde{x}'}{\tilde{x}} \right)  \right].\label{T-sts-final-dimless}
+\end{multline}
+
+Перепишем для удобства систему (\ref{ni-sts-final-dimless}) -- (\ref{T-sts-final-dimless}) как систему ОДУ первого порядка:
 
 \end{document}
