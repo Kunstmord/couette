@@ -304,27 +304,27 @@
 
 Значение численной плотности смеси бралось равным $n=1.4 \cdot 10^{20}$.
 
-Случай 1 (температуры стенок равны 1000K):
-\begin{center}
-\includegraphics[width=10cm]{plots/vel_tc3}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/T_tc3}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/eta_tc3}
-\end{center}
+% Случай 1 (температуры стенок равны 1000K):
+% \begin{center}
+% \includegraphics[width=10cm]{plots/vel_tc3}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/T_tc3}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/eta_tc3}
+% \end{center}
 
-Случай 2 (температуры стенок равны 273K):
-\begin{center}
-\includegraphics[width=10cm]{plots/vel_tc1}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/T_tc1}
-\end{center}
-\begin{center}
-\includegraphics[width=10cm]{plots/eta_tc1}
-\end{center}
+% Случай 2 (температуры стенок равны 273K):
+% \begin{center}
+% \includegraphics[width=10cm]{plots/vel_tc1}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/T_tc1}
+% \end{center}
+% \begin{center}
+% \includegraphics[width=10cm]{plots/eta_tc1}
+% \end{center}
 
 \section{Производные основных величин (поуровневое приближение)}
 Рассмотрим течение чисто молекулярного газа в поуровневом приближении.
@@ -557,7 +557,7 @@
   - \frac{1}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} \right. + \left. \mathcal{D}\left(n_{i}'' - \frac{n''n_{i}}{n} + \frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].
 \end{multline}
 
-Таким образом, система уравнений в итоге принимает следующий вид:
+Таким образом, система уравнений в итоге принимает следующий вид (с учетом того, что $\lambda$ не зависит от числовых плотностей):
 
 \begin{multline}
 \frac{n''}{n} - \frac{n_{i}''}{n_{i}} = 
@@ -574,7 +574,7 @@
 \end{equation}
 
 \begin{multline}
-  T'' + \frac{\mathcal{D}}{\lambda'}\sum_{i}\varepsilon_{i}\left(n_{i}'' - \frac{n_{i}}{n}n'' \right) = -\frac{\eta}{\lambda'} \left(v_{x}' \right)^2 - \frac{T'}{\lambda'} \left(T' \frac{\partial \lambda'}{\partial T} + n' \frac{\partial \lambda'}{\partial n} \right) - \\
+  T'' + \frac{\mathcal{D}}{\lambda'}\sum_{i}\varepsilon_{i}\left(n_{i}'' - \frac{n_{i}}{n}n'' \right) = -\frac{\eta}{\lambda'} \left(v_{x}' \right)^2 - \frac{\left(T'\right)^2}{\lambda'} \frac{\partial \lambda'}{\partial T} - \\
   - \frac{1}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{n} + \mathcal{D}\left(\frac{n_{i}\left(n'\right)^2}{n^2} - \frac{n_{i}'n'}{n} \right)  \right].\label{T-sts-final}
 \end{multline}
 
@@ -600,7 +600,7 @@
 \end{equation}
 
 \begin{multline}
-  \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) = -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\tau'}{\lambda'} \left(\tau' \frac{\partial \lambda'}{\partial \tau} + \tilde{x}' \frac{\partial \lambda'}{\partial \tilde{x}} \right) - \\
+  \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) = -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\left(\tau'\right)^2}{\lambda'} \frac{\partial \lambda'}{\partial \tau} - \\
   - \frac{n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\tilde{x}} + \mathcal{D}\left(\frac{x_{i}\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{x_{i}'\tilde{x}'}{\tilde{x}} \right)  \right].\label{T-sts-final-dimless}
 \end{multline}
 
@@ -618,13 +618,12 @@
   \frac{d \tau}{d\zeta} = \tau', \label{eqn-dtau-sts}
 \end{equation}
 
-\textcolor{red}{
 \begin{multline}
-\frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
+\frac{1}{\tilde{x}}\sum_{k}\frac{dx_{k}'}{d\zeta} - \frac{1}{x_{i}}\frac{d x_{i}'}{d\zeta} =
+% \frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
   x_{i}' \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{x_{i}^2 \tilde{x}} + \left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\mathcal{D}x_{i}\tilde{x}} + \\
   + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{eqn-d2x_i-sts}
 \end{multline}
-}
 
 \begin{equation}
   \tau \sum_{i}\frac{d x_{i}'}{d \zeta} + \frac{d \tau'}{d \zeta}\sum_{i}x_{i} = -2\tau'\sum_{i}\frac{d x_{i}}{d \zeta},\label{eqn-d2x_i-sts-additional}
@@ -634,12 +633,13 @@
   \frac{d \xi'}{d\zeta} = -\frac{1}{\eta} \xi' \tau' \frac{\partial \eta}{\partial \tau},\label{eqn-d2xi-sts}
 \end{equation}
 
-\textcolor{red}{
 \begin{multline}
-  \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) = -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\tau'}{\lambda'} \left(\tau' \frac{\partial \lambda'}{\partial \tau} + \tilde{x}' \frac{\partial \lambda'}{\partial \tilde{x}} \right) - \\
+  T_{wall,2}\frac{d \tau'}{d \zeta} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\left(\sum_{i}\varepsilon_{i}\frac{d x_{i}'}{d\zeta} - \sum_{k}\frac{d x_{k}'}{d \zeta}\sum_{i}\varepsilon_{i}\frac{x_{i}}{\tilde{x}} \right) = 
+  % \tau''T_{wall,2} + \frac{\mathcal{D}n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i}\left(x_{i}'' - \frac{x_{i}}{\tilde{x}}\tilde{x}'' \right) =
+   -\frac{\eta}{\lambda'} v_{wall}^2 \left(\xi' \right)^2 - T_{wall,2}\frac{\left(\tau'\right)^2}{\lambda'} \frac{\partial \lambda'}{\partial \tau} - \\
   - \frac{n_{wall,2}}{\lambda'}\sum_{i}\varepsilon_{i} \left[\left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\tilde{x}} + \mathcal{D}\left(\frac{x_{i}\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{x_{i}'\tilde{x}'}{\tilde{x}} \right)  \right].\label{eqn-dtau-sts}
 \end{multline}
-}
+
 
 Итого, имеем систему из $2L+4$ ОДУ 1го порядка.
 
