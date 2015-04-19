@@ -331,7 +331,7 @@
 
 Уравнения для численных плотностей имеют вид
 \begin{equation}
-  \frac{d n_{i}}{d y} V_{i} + n_{i}\frac{d V_{i}}{d y} = R_{i}^{vibr},\quad c=1,\ldots,L.\label{densityeqn-sts}
+  \frac{d n_{i}}{d y} V_{i} + n_{i}\frac{d V_{i}}{d y} = R_{i}^{vibr},\quad c=0,\ldots,L.\label{densityeqn-sts}
 \end{equation}
 
 Скорость диффузии:
@@ -562,7 +562,7 @@
 \begin{multline}
 \frac{n''}{n} - \frac{n_{i}''}{n_{i}} = 
   n_{i}' \frac{n_{i}'n - n_{i}n'}{n_{i}^2 n} + \\
-  + \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{\mathcal{D}n_{i}n} + \frac{\left(n'\right)^2}{n^2} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} + \frac{R_{i}^{vibr}}{\mathcal{D}n_{i}},\:i=1,\ldots,L-1,\label{ni-sts-final}
+  + \left(\frac{\partial \mathcal{D}}{\partial n}n' + \frac{\partial \mathcal{D}}{\partial T}T' \right) \frac{n_{i}'n - n_{i}n'}{\mathcal{D}n_{i}n} + \frac{\left(n'\right)^2}{n^2} - \frac{\left(n_{i}'\right)^2}{n_{i}^2} + \frac{R_{i}^{vibr}}{\mathcal{D}n_{i}},\:i=0,\ldots,L-1,\label{ni-sts-final}
 \end{multline}
 
 \begin{equation}
@@ -588,7 +588,7 @@
 \begin{multline}
 \frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
   x_{i}' \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{x_{i}^2 \tilde{x}} + \left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\mathcal{D}x_{i}\tilde{x}} + \\
-  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{ni-sts-final-dimless}
+  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=0,\ldots,L-1,\label{ni-sts-final-dimless}
 \end{multline}
 
 \begin{equation}
@@ -622,7 +622,7 @@
 \frac{1}{\tilde{x}}\sum_{k}\frac{dx_{k}'}{d\zeta} - \frac{1}{x_{i}}\frac{d x_{i}'}{d\zeta} =
 % \frac{\tilde{x}''}{\tilde{x}} - \frac{x_{i}''}{x_{i}} = 
   x_{i}' \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{x_{i}^2 \tilde{x}} + \left(\frac{\partial \mathcal{D}}{\partial \tilde{x}}\tilde{x}' + \frac{\partial \mathcal{D}}{\partial \tau}\tau' \right) \frac{x_{i}'\tilde{x} - x_{i}\tilde{x}'}{\mathcal{D}x_{i}\tilde{x}} + \\
-  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=1,\ldots,L-1,\label{eqn-d2x_i-sts}
+  + \frac{\left(\tilde{x}'\right)^2}{\tilde{x}^2} - \frac{\left(\tilde{x}_{i}'\right)^2}{\tilde{x}_{i}^2} + Y^{2}\frac{R_{i}^{vibr}}{\mathcal{D}x_{i}n_{wall,2}},\:i=0,\ldots,L-1,\label{eqn-d2x_i-sts}
 \end{multline}
 
 \begin{equation}
